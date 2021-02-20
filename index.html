@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 mt-5">
+                <div class="text-center">
+                    <h1>Inteligencia Artificial GUIA 2</h1>
+                    <p>Pablo Andres Diaz Mora</p>
+                    <p>Paula Sofia Martinez</p>
+                </div>
+            </div>
+            <div class="col-4">
+                <label for="">Localizacion Inicial</label>
+                <select name="" id="localizacion-inicial" class="form-control">
+                    <option value="right">Derecha</option>
+                    <option value="left">Izquierda</option>
+                </select>
+            </div>
+            <div class="col-4">
+                <label for="">Suciedad</label>
+                <select name="" id="suciedad" class="form-control">
+                    <option value="both">Ambos lados</option>
+                    <option value="right">Derecha</option>
+                    <option value="left">Izquierda</option>
+                    <option value="none">Ninguno</option>
+                </select>
+            </div>
+            <div class="col-4">
+                <label for="">Numero turnos</label>
+                <input type="number" class="form-control" id='try-number'>
+                <button class="btn btn-success mt-2 form-control" id="start-btn">Iniciar</button>
+            </div>
+            <div class="col-6 mt-5">
+                <div style="float: right">
+                    <img  alt="" height="250px" id="letf_image">
+                </div>
+            </div>
+            <div class="col-6 mt-5">
+                <div class="float-left">
+                    <img  alt="" height="250px" id="right_image">
+                </div>
+            </div>
+            <div class="col-6 mt-1">
+                <div style="float: right">
+                    <img  alt="" height="250px" id="letf_image_dirty">
+                </div>
+            </div>
+            <div class="col-6 mt-1">
+                <div class="float-left">
+                    <img  alt="" height="250px" id="right_image_dirty">
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
