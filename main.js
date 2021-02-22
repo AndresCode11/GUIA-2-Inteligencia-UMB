@@ -1,5 +1,4 @@
 $(document).ready(function(){
-    alert()
     document.getElementById('start-btn').addEventListener('click', function() {
         init();
     })    
@@ -7,6 +6,12 @@ $(document).ready(function(){
 
 
 async function init() {
+
+    // Dirty position
+    let dirty_position = [false, false];
+
+    // Aspiradora position
+    let index = 0;
     
     // Localizacion inicial
     let initial_location = document.getElementById('localizacion-inicial').value;
@@ -34,11 +39,13 @@ async function init() {
         case "right":
             rigth_image.src = 'images/aspiradora.JPG';
             letf_image.src = 'images/empty.JPG';
+            index = 0;
         break;
 
         case "left":
             rigth_image = 'images/empty.JPG';
             letf_image.src = 'images/aspiradora.JPG';
+            index = 1;
         break;
     }
 
@@ -47,36 +54,67 @@ async function init() {
         case "both":
             rigth_image_dirty.src = 'images/dirty.JPG';
             letf_image_dirty.src = 'images/dirty.JPG';
+            dirty_position = [true, true];
         break;
 
         case "right":
             rigth_image_dirty.src = 'images/dirty.JPG';
             letf_image_dirty.src = 'images/empty.JPG';
+            dirty_position = [false, true];
         break;
 
         case "left": 
             rigth_image_dirty.src = 'images/empty.JPG';
             letf_image_dirty.src = 'images/dirty.JPG';
+            dirty_position = [true , false];
         break;
 
         case "none":
             rigth_image_dirty.src = 'images/empty.JPG';
             letf_image_dirty.src = 'images/empty.JPG';
+            dirty_position = [false, false];
         break;
     }
 
-    
-   for (let index = 0; index < 10; index++) {
+    let win_counter = 0;
+
+   for (index; index < 10; index++) {
         await delay();
         console.log(index);
+        console.log('_____')
+        console.log(index % 2)
+
+        // Image rotation
         if(index % 2 == 0) {
             rigth_image.src = 'images/aspiradora.JPG';
             letf_image.src = 'images/empty.JPG';
+
+            // Check if current position is dirty
+            if(dirty_position[index % 2]) {
+                dirty_position[index % 2] = false;
+                rigth_image_dirty.src = 'images/empty.JPG';
+            }
         }
         else {
-            rigth_image = 'images/empty.JPG';
+            rigth_image.src = 'images/empty.JPG';
             letf_image.src = 'images/aspiradora.JPG';
-        }   
+
+            // Check if current position is dirty
+            if(dirty_position[index % 2]) {
+                dirty_position[index % 2] = false;
+                letf_image_dirty.src = 'images/empty.JPG';
+            }
+        }  
+        
+        // Check to exit the loop
+        if(dirty_position[0] == false && dirty_position[1]  == false) {
+            win_counter++;
+            if(win_counter > 1) {
+                alert('FIN DE LA SIMULACION NO HAY BASURA');
+                location.reload();
+                break;
+            }
+        }
    }
     
     
